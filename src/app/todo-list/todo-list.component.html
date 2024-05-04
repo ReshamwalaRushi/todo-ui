@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>To Do List</h1>
+
+  <form [formGroup]="taskForm" (ngSubmit)="addTask()" class="task-form">
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="task"
+        placeholder="Enter task"
+        required
+      />
+      <input type="date" formControlName="deadline" required />
+    </div>
+    <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+  </form>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Completed</th>
+          <th>Task</th>
+          <th>Deadline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>
+            <input
+              type="checkbox"
+              (change)="changed(task['id'], task.isCompleted)"
+              [(ngModel)]="task.isCompleted"
+            />
+          </td>
+          <td>{{ task.taskName }}</td>
+          <td>{{ task.deadline | date : "dd-MM-YYYY" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
