@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class TodoService {
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl =
+    'https://main--my-todo-list-api.netlify.app/.netlify/functions/app';
 
   constructor(private http: HttpClient) {}
 
